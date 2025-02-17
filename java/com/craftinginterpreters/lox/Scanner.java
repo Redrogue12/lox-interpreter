@@ -98,7 +98,7 @@ class Scanner {
         if (isDigit(c)) {
           number();
         } else if (isAlpha(c)) {
-          identifier(c);
+          identifier();
         } else {
           Lox.error(line, "Unexpected character.");
         }
