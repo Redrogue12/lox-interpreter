@@ -76,6 +76,12 @@ class Scanner {
         if (match('/')) {
           // A comment goes until the end of the line.
           while (peek() != '\n' && !isAtEnd()) advance();
+        } else if (match('*')) {
+          // A block comment goes until the end of the block.
+          while (peek() != '*' && peekNext() != '/' && !isAtEnd()) {
+            if (peek() == '\n') line++;
+            advance();            
+          }
         } else {
           addToken(SLASH);
         }
